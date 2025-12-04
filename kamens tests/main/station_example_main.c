@@ -7,6 +7,7 @@
 
 #include "esp_log.h"
 #include "nvs_flash.h"
+#include "esp_mac.h"
 
 #include "LED_Controler.h"
 #include "Storage_Manager.h"
@@ -42,12 +43,12 @@ void app_main(void)
     wifi_manager_start();
     ESP_LOGI(TAG, "WiFi manager started");
 
-    /* Initialize and start BLE Central */
-    int rc = ble_central_init();
+    /* Initialize and start BLE Peripheral */
+    int rc = ble_peripheral_init();
     if (rc != 0) {
-        ESP_LOGE(TAG, "Failed to initialize BLE Central");
+        ESP_LOGE(TAG, "Failed to initialize BLE Peripheral");
     } else {
-        ESP_LOGI(TAG, "BLE Central started. Will scan and connect to nearby devices.");
+        ESP_LOGI(TAG, "BLE Peripheral started as 'ESP-SKYNET'. Waiting for connections...");
     }
 
     ESP_LOGI(TAG, "=== All modules initialized ===");
