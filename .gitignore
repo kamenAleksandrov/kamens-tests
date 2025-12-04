@@ -1,3 +1,5 @@
 /build/
-.vscode
-.devcontainer
+**/.vscode
+**/.devcontainer
+**/build/
+/dist/
